@@ -38,10 +38,11 @@ class ParameterEncoderTest extends TestCase
     {
         $encoder = new ParameterEncoder();
 
+        // Regex from: https://www.php.net/manual/en/language.oop5.basic.php
         self::assertMatchesRegularExpression(
-            '/[a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]+/',
+            '/^[a-zA-Z_\x80-\xff][a-zA-Z0-9_\x80-\xff]*$/',
             $encoder->encodeParameters($parameters),
-            'Encoded string is a valid class identifier'
+            'Encoded string is not a valid class identifier'
         );
     }
 

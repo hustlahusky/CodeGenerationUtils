@@ -37,6 +37,6 @@ class ParameterEncoder
      */
     public function encodeParameters(array $parameters): string
     {
-        return str_replace('+/=', '†‡•', base64_encode(serialize($parameters)));
+        return str_replace(['+','/', '='], ['†','‡', '•'], base64_encode(serialize($parameters)));
     }
 }
